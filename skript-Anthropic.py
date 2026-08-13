@@ -12,7 +12,7 @@ client = anthropic.Anthropic(
     api_key=os.getenv("ANTHROPIC_API_KEY")
 )
 
-# Schleife für die Input-Prompts tbd siehe tryout skript
+# Schleife für die Input-Prompts 
 meine_prompts = [
 "Ich bin im Einkauf eines mittelständischen Unternehmens und suche erstmalig einen Lieferanten für Aluminium-Druckgussteile. Gesucht wird in Deutschland. Welche Anbieter kommen infrage? Verwende die Websuche, um Firmenwebsites zu finden.",
 "Ich bin im Einkauf eines mittelständischen Unternehmens und suche erstmalig einen Lieferanten für Aluminium-Druckgussteile. Die Teile müssen nach IATF 16949 gefertigt und erstmusterfähig sein, der Jahresbedarf liegt bei rund 50.000 Stück. Gesucht wird in Deutschland. Welche Anbieter kommen infrage? Verwende die Websuche, um aktuelle Informationen zu finden.",
@@ -57,8 +57,8 @@ meine_prompts = [
 gesammelte_daten = []
 CSV_DATEI = "ergebnisse_anthropic.csv"
 
-# Falls die CSV aus früheren Läufen schon existiert, laden wir sie,
-# damit wir die Nummerierung fortsetzen und neue Ergebnisse anhängen statt sie zu überschreiben
+# Falls die CSV aus früheren Läufen schon existiert, lädt sie hier,
+# damit  die Nummerierung fortgesetzt werden und neue Ergebnisse angehängt werden können statt sie zu überschreiben
 if os.path.exists(CSV_DATEI):
     df_bisherige_ergebnisse = pd.read_csv(CSV_DATEI)
     zeilen_nummer = df_bisherige_ergebnisse["Nummer"].max() + 1
@@ -66,10 +66,10 @@ else:
     df_bisherige_ergebnisse = None
     zeilen_nummer = 1
 
-# ÄUßERE SCHLEIFE: Geht jeden deiner Prompts nacheinander durch
+# ÄUßERE SCHLEIFE: Geht jeden  Prompt nacheinander durch
 for aktueller_prompt in meine_prompts:
 
-    # INNERE SCHLEIFE: Wiederholt den aktuellen Prompt genau 3 Mal
+    # INNERE SCHLEIFE: Wiederholt den aktuellen Prompt genau 1 Mal
     for durchlauf in range(1, 2):  # Zählt von 1 bis 2
         print(f"Verarbeite Prompt {aktueller_prompt} (Durchlauf {durchlauf} von 1)")
 
@@ -158,7 +158,7 @@ for aktueller_prompt in meine_prompts:
         
         zeilen_nummer += 1
 
-        # <-- HIER DIE PAUSE EINBAUEN -->
+        # <-- HIER DIE PAUSE -->
         print(f"Durchlauf {durchlauf} fertig. Warte 65 Sekunden, um das API-Limit nicht zu sprengen...")
         time.sleep(65) # 60 Sekunden Pause, um das API-Limit nicht zu sprengen
 
