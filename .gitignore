@@ -1,0 +1,26 @@
+# Zugangsdaten - niemals ins Repository
+.env
+.env.*
+!.env.example
+*.key
+credentials.json
+
+# Virtuelle Umgebung - wird per requirements.txt rekonstruiert
+.venv/
+venv/
+
+# Python-Zwischendateien
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.pytest_cache/
+
+# Editor / Betriebssystem
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Daten und Ergebnisse - anpassen!
+data/
+output/
+!**/.gitkeep
