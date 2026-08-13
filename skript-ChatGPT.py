@@ -119,7 +119,7 @@ for aktueller_prompt in meine_prompts:
             })
             zeilen_nummer += 1
 
-            # Korrekt eingereckte Pause am Ende des Durchlaufs
+            # Pause am Ende des Durchlaufs
             print(f"Durchlauf {durchlauf} fertig. Warte 65 Sekunden, um das API-Limit nicht zu sprengen...")
             time.sleep(65)
 
